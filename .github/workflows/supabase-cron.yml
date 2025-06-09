@@ -1,0 +1,18 @@
+name: Supabase Cron Trigger
+
+on:
+  schedule:
+    # Every 10 minutes (adjust as needed)
+    - cron: '*/10 * * * *'
+  workflow_dispatch:  # Allows manual run from GitHub UI
+
+jobs:
+  call-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Supabase Edge Function
+        run: |
+          curl -X POST https://xjkisbwnnmttzfriiwuc.supabase.co/functions/v1/whatsapp-reminder-cron \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{"trigger":"cron"}'
