@@ -3,7 +3,7 @@ name: Supabase Cron Trigger
 on:
   schedule:
     # Every 10 minutes (adjust as needed)
-    - cron: '*/1 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:  # Allows manual run from GitHub UI
 
 jobs:
